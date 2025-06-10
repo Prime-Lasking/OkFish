@@ -10,6 +10,9 @@ piece_values = {
     chess.KING: 100
 }
 def evaluation(board):
+    check_mate = 0
+    if board.is_checkmate():
+        check_mate += float(math.inf)
     wp = len(board.pieces(chess.PAWN, chess.WHITE))
     bp = len(board.pieces(chess.PAWN, chess.BLACK))
     wn = len(board.pieces(chess.KNIGHT, chess.WHITE))
@@ -22,7 +25,11 @@ def evaluation(board):
     bq = len(board.pieces(chess.QUEEN, chess.BLACK))
 
     material_score = 1 * (wp - bp) + 3 * (wn - bn) + 4 * (wb - bb) + 5 * (wr - br) + 10 * (wq - bq)
-    return material_score
+    return material_score + check_mate
+    if board.turn:
+        return -total_score
+    else:
+        return total_score
 
 def best_move(board):
         best_score = -float('inf')
