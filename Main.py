@@ -10,10 +10,10 @@ for _ in tqdm(range(games),file=sys.stdout,colour="green"):
     board = chess.Board()
     while not board.is_game_over():
         if board.turn:
-            move = best_move(board,3)
+            move = best_move(board,3)# 3 being the depth
             board.push(move)
         else:
-            move = best_move(board,4)
+            move = random_move(board)
             board.push(move)
 
     outcome = board.outcome()
