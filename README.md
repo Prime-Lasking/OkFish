@@ -1,1 +1,1 @@
-A Very very very bad Chess bot 
+An ok Chess bot 
